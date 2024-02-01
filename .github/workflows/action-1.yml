@@ -1,0 +1,27 @@
+name: "Action 1"
+run-name: Deploy `${{ inputs.stack_name }}` to `${{ github.ref_name }}` environment
+
+# Manually trigger workflow
+on:
+  workflow_dispatch:
+    inputs:
+      stack_name:
+        type: choice
+        description: option
+        options:
+          - option-1
+          - option-2
+
+
+env:
+  VAR_1: var-1
+
+jobs:
+  check-branch:
+    name: Make the first action
+    runs-on: ubuntu-latest
+    steps:
+      - name: This step is the first action step
+        id: first-step
+        run: |
+          echo "First step"
